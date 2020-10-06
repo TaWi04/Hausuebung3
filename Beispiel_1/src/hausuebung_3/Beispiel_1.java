@@ -15,7 +15,9 @@ public class Beispiel_1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ReadInFile rif = new ReadInFile();
+      
+       rif.Comparator_combatType_damageType_name(rif.readFile());
     }
     
 }
