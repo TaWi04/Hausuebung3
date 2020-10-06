@@ -73,11 +73,9 @@ public class ReadInFile {
                 }else{
                    return w1.getDamageType().compareTo(w2.getDamageType());
                 }
-               
             }else{
              return  w1.getCombatType().compareTo(w2.getCombatType());
             }
-            
         });
         
         for (Weapon weapon : weapons) {

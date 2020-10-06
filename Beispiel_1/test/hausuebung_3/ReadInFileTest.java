@@ -60,5 +60,32 @@ public class ReadInFileTest {
         
         assertEquals(damgage_max,weapons.get(0).getDamage());
     }
+
+//    @Test
+//    public void testReadFile() {
+//        System.out.println("readFile");
+//        ReadInFile instance = new ReadInFile();
+//        List<Weapon> expResult = null;
+//        List<Weapon> result = instance.readFile();
+//        assertEquals(expResult, result);
+//        fail("The test case is a prototype.");
+//    }
+
+    @Test
+    public void testComparator_combatType_damageType_name() {
+        System.out.println("Comparator");
+        CombatType expected_firstCombatType =CombatType.MELEE;
+        DamageType expected_firstDamageType = DamageType.BLUNT;
+        String expected_firstname = "Crom Faeyr"; 
+        
+        ReadInFile instance = new ReadInFile();
+        List<Weapon> weapons = instance.readFile();
+        instance.Comparator_combatType_damageType_name(weapons);
+        if((expected_firstCombatType.compareTo(weapons.get(0).getCombatType())==0) &&
+           (expected_firstDamageType.compareTo(weapons.get(0).getDamageType()))==0 && 
+           (expected_firstname.compareTo(weapons.get(0).getName()))==0){
+          assertEquals(true,true);
+        }
+        }
     
 }

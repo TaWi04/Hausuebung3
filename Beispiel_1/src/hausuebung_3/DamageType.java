@@ -10,5 +10,5 @@ package hausuebung_3;
  * @author Tamara
  */
 public enum DamageType {
-    SLASHING,MISSILE,BLUNT,PIERCING,NONE
+   BLUNT,MISSILE,NONE,SLASHING,PIERCING
 }

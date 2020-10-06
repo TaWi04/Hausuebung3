@@ -10,5 +10,5 @@ package hausuebung_3;
  * @author Tamara
  */
 public enum CombatType {
-    MELEE,RANGED,NONE
+    MELEE,NONE,RANGED
 }
