@@ -5,11 +5,15 @@
  */
 package hausuebung_3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Tamara
  */
 public class Weapon {
+    private  List<String> categories = new ArrayList<>();
     private  String name;
     private  CombatType combatType;
     private  DamageType damageType;
@@ -26,6 +30,7 @@ public class Weapon {
         this.speed = speed;
         this.strength = strength;
         this.value = value;
+        creatingCategoriesList();
     }
 
     public String getName() {
@@ -55,6 +60,21 @@ public class Weapon {
     public int getValue() {
         return value;
     }
+    public String getCategories(){
+        return "name;combatType;damageType;damage;speed;strength;value ".toUpperCase();
+    }
+    private void creatingCategoriesList(){
+       String[] categoriesArray = getCategories().split(";");
+        for (String string : categoriesArray) {
+            categories.add(string);
+        }
+        
+    }
+    public List<String> getCategoriesList(){
+        
+        return categories;
+    }
+    
 
     @Override
     public String toString() {

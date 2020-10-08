@@ -17,7 +17,9 @@ public class Beispiel_1 {
     public static void main(String[] args) {
         ReadInFile rif = new ReadInFile();
       
-       rif.Comparator_combatType_damageType_name(rif.readFile());
+       //rif.Comparator_combatType_damageType_name(rif.readFile());
+       //rif.printConsole(rif.readFile());
+       rif.printTable(rif.readFile());
     }
     
 }
