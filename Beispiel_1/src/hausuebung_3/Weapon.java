@@ -75,7 +75,9 @@ public class Weapon {
         return categories;
     }
     
-
+    public String newToString(){
+        return name + ";" + combatType + ";" + damageType +";" + damage + ";" + speed + ";" + strength + ";" + value;
+    }
     @Override
     public String toString() {
         return "Weapon{"+name + ";" + combatType + ";" + damageType +";" + damage + ";" + speed + ";" + strength + ";" + value + '}';

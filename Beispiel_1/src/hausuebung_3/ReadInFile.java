@@ -98,14 +98,72 @@ public class ReadInFile {
     }
     
     public void printTable(List<Weapon> weapon){
-      // int length_of_spaces = 10;
         Weapon temp_Weapon = weapon.get(0);
         List<String> categories = temp_Weapon.getCategoriesList();
         int max = 0;  
         String spaces = "";
-        for (String category : categories) {
-            if(category.length() > max)
-                max = category.length();
+//        for (String category : categories) {
+//            if(category.length() > max)
+//                max = category.length();
+//        }
+        max = calculateMax(weapon);
+        final int spaces_length = max -1;
+        lineForTable(weapons, max, spaces, categories,spaces_length);
+        for (int i = 0; i <= max; i++) {
+           spaces += " ";
+        }
+      
+       Comparator_combatType_damageType_name(weapons);
+//        categories.forEach((w) -> {
+//            for (int i = 0; i <= spaces_length; i++) {
+//                System.out.print("-");
+//            }
+//            System.out.print("+");
+//        });
+        
+       
+        
+      printCategoriesForTable(categories,spaces,max);
+        lineForTable(weapons, max, spaces, categories,spaces_length);
+           
+        for (Weapon weapon1 : weapon) {
+            String[] tempString = weapon1.newToString().split(";");
+            for (String weapon_splitted : tempString) {
+            int space_length = (max - weapon_splitted.length())/2;
+            if((max - weapon_splitted.length()) % 2 != 0){
+                System.out.print(" ");
+            }
+            
+           
+            System.out.print(spaces.substring(0,space_length)  + weapon_splitted + spaces.substring(0, space_length) + "|");
+                 }
+            lineForTable(weapons, max, spaces, categories,spaces_length);
+           
+            //int space_length = (max - weapon1.getName().length())/2;
+            //System.out.print(spaces.substring(0,space_length)  + weapon + spaces.substring(0, space_length) + "|");
+            }
+      
+    }
+    
+    public void lineForTable(List<Weapon> pWeapons, int max, String spaces, List<String> categories, int spaces_length){
+        System.out.println();
+        for (int i = 0; i <= max; i++) {
+            spaces += " ";
+        }
+        categories.forEach((w) -> {
+            for (int i = 0; i <= spaces_length; i++) {
+                System.out.print("-");
+            }
+            System.out.print("+");
+        });
+        
+        System.out.println();
+    }
+    public int calculateMax(List<Weapon> weapon){
+        int max = 0;
+         for (Weapon weapon1 : weapon) {
+            if(weapon1.getName().length() > max)
+                max = weapon1.getName().length();
         }
         if(max % 2 != 0){
             max += 3;
@@ -114,36 +172,19 @@ public class ReadInFile {
             max +=  2;
         }
         
-        for (int i = 0; i <= max; i++) {
-            spaces += " ";
-        }
-        final int spaces_length = max -1;
-     Comparator_combatType_damageType_name(weapons);
-        categories.forEach((w) -> {
-            for (int i = 0; i <= spaces_length; i++) {
-                System.out.print("-");
-            }
-            System.out.print("+");
-        });
-        
-       
-        //System.out.println(spaces_length);
-        System.out.println();
-        
+        return max;
+    }
+    
+    public void printCategoriesForTable(List<String> categories,String spaces, int max){
         for (String category : categories) {
-            //System.out.print(max - category.length());
-            //System.out.print((max - category.length())/2);
             if(category.equals("SPEED")){
-             int space_length = (max - category.length())/2;
-            System.out.print(spaces.substring(0,space_length)  + category + spaces.substring(0, space_length +2));
+            int space_length = (max - category.length())/2;
+            System.out.print(spaces.substring(0,space_length)  + category + spaces.substring(0, space_length +1)+"|");
        
             }else{
                 int space_length = (max - category.length())/2;
-            System.out.print(spaces.substring(0,space_length)  + category + spaces.substring(0, space_length +1));
+            System.out.print(spaces.substring(0,space_length)  + category + spaces.substring(0, space_length) + "|");
          
             }
-           }
-        
-      
     }
-}
+}}
