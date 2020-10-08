@@ -19,7 +19,7 @@ public class Beispiel_1 {
       
        //rif.Comparator_combatType_damageType_name(rif.readFile());
        //rif.printConsole(rif.readFile());
-       rif.printTable(rif.readFile());
+       rif.printTable(rif.readFileWithStream());
     }
     
 }
