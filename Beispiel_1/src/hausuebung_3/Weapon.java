@@ -32,6 +32,9 @@ public class Weapon {
         this.value = value;
         creatingCategoriesList();
     }
+    public Weapon(){
+        creatingCategoriesList();
+    }
 
     public String getName() {
         return name;
@@ -60,18 +63,16 @@ public class Weapon {
     public int getValue() {
         return value;
     }
-    public String getCategories(){
+    private String getCategories(){
         return "name;combatType;damageType;damage;speed;strength;value ".toUpperCase();
     }
     private void creatingCategoriesList(){
        String[] categoriesArray = getCategories().split(";");
         for (String string : categoriesArray) {
             categories.add(string);
-        }
-        
+        }  
     }
     public List<String> getCategoriesList(){
-        
         return categories;
     }
     

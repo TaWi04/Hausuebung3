@@ -117,13 +117,14 @@ public class ReadInFile { // old
     }
     
     public void printTable(List<Weapon> weapon){
-        Weapon temp_Weapon = weapon.get(0);
+        Weapon temp_Weapon = new Weapon();
         List<String> categories = temp_Weapon.getCategoriesList();
         int max = 0;  
         String spaces = "";
         max = calculateMax(weapon); // method which calcs the max length for space
         final int spaces_length = max -1;
-        lineForTable(weapons, max, spaces, categories,spaces_length);// method which prints a line
+        String separator = getRowSeparator(fileName, categories, spaces_length);
+        System.out.print(separator);
         for (int i = 0; i <= max; i++) {
            spaces += " ";
         }
@@ -131,8 +132,8 @@ public class ReadInFile { // old
         Comparator_combatType_damageType_name(weapons); //sorts List
         
         printCategoriesForTable(categories,spaces,max); // method which prints all categories
-        lineForTable(weapons, max, spaces, categories,spaces_length); 
-           
+            System.out.print(separator);
+ 
         for (Weapon weapon1 : weapon) {
             String[] tempString = weapon1.newToString().split(";");
             for (String weapon_splitted : tempString) {
@@ -140,29 +141,29 @@ public class ReadInFile { // old
             if((max - weapon_splitted.length()) % 2 != 0){
                 System.out.print(" ");
             }
-            
-           
             System.out.print(spaces.substring(0,space_length)  + weapon_splitted + spaces.substring(0, space_length) + "|");
                  }
-            lineForTable(weapons, max, spaces, categories,spaces_length);
-           
+                  System.out.print(separator);
+ 
              }
       
     }
     
-    public void lineForTable(List<Weapon> pWeapons, int max, String spaces, List<String> categories, int spaces_length){ // method which prints a line
-        System.out.println();
-        for (int i = 0; i <= max; i++) {
-            spaces += " ";
-        }
+    public String getRowSeparator(String spaces, List<String> categories, int spaces_length){ // method which prints a line
+        StringBuilder separator = new StringBuilder();
+        separator.append('\n');
+       // System.out.println();
         categories.forEach((w) -> {
             for (int i = 0; i <= spaces_length; i++) {
-                System.out.print("-");
+                separator.append('-');
+               // System.out.print("-");
             }
-            System.out.print("+");
+            separator.append('+');
+            //System.out.print("+");
         });
-        
-        System.out.println();
+        separator.append('\n');
+        //System.out.println();
+        return separator.toString();
     }
     public int calculateMax(List<Weapon> weapon){// method which calcs the max length for space
         int max = 0;
