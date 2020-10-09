@@ -12,7 +12,9 @@ package net.htlgrieskirchen.pos3.streams;
 public class Main {
     public static void main(String[] args) {
         Streams stream = new Streams();
-        stream.fillArray();
-        System.out.println(stream.average(stream.getNumbers()));
+        //stream.fillArray();
+        stream.fillStringArray();
+        System.out.println(stream.upperCase(stream.getStringsArray()));
+        
     }
 }
